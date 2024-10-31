@@ -11,50 +11,34 @@ Several key concepts in CNN
 * **The pursuit of efficiency has been a constant theme**, with architectures like MobileNet, Xception, and EfficientNet employing innovative techniques to reduce computational costs without compromising accuracy.
 * **The rise of automated architecture search methods, highlighted in sources like "designNetwork.pdf" and "efficientNet.pdf", signals a shift towards more data-driven approaches** for discovering optimal network configurations.
 
-## Bottlenecks in Neural Network Models: A Multifaceted Perspective
+## Timeline of Studies
 
-The term "bottleneck" in the context of neural network models can refer to several different aspects. The sources provide insights into three main types of bottlenecks: **architectural bottlenecks**, **representational bottlenecks**, and **computational bottlenecks**.
+While the sources do not explicitly state the exact years in which each specific study was conducted, it is possible to construct a relative timeline based on references and contextual information within the provided excerpts.
 
-### Architectural Bottlenecks
+* **Earliest Foundations:** The origins of convolutional neural networks can be traced back to the late 1980s.  LeCun et al.'s work on applying backpropagation to handwritten zip code recognition, published in 1989, represents a foundational contribution to the field. Their subsequent work on gradient-based learning for document recognition, published in 1998, further advanced the understanding and application of CNNs.
 
-* **Bottleneck Blocks:** Sources discuss **bottleneck blocks** as a common architectural pattern in CNNs. These blocks typically consist of a 1x1 convolution to reduce the number of channels (creating a "bottleneck"), followed by a 3x3 convolution for spatial processing, and finally another 1x1 convolution to expand the channels back to the original dimension. The bottleneck structure helps to reduce computational complexity and the number of parameters without significantly sacrificing representational power.
+* **Early 2000s:** Research on spatially separable convolutions began gaining traction in the early 2000s. Mamalet and Garcia's work in 2012 explored simplifying ConvNets for faster learning using spatially separable convolutions. 
 
-    * Source finds that **the best RegNet models do not use a bottleneck (bottleneck ratio of 1.0).** This suggests that the benefits of reduced complexity might be outweighed by the potential information loss introduced by the bottleneck. 
+* **2012 - A Pivotal Year:**  AlexNet emerged as a groundbreaking architecture in 2012, demonstrating the power of CNNs for image classification.  
 
-    * Source echoes this finding, observing that the inverted bottleneck (bottleneck ratio less than 1) degrades performance, particularly at higher flop regimes.
+* **2013 - Exploring Depth and Efficiency:**  In 2013, Sifre, during his internship at Google Brain, experimented with depthwise separable convolutions, applying them to AlexNet. This work, later presented at ICLR 2014 and detailed in his thesis (2014), achieved performance gains while reducing model size and improving convergence speed. 
 
-* **Inverted Bottleneck Blocks:** MobileNetV2 introduces **inverted bottleneck blocks**, where the expansion and reduction operations are reversed. The input is first expanded to a higher dimension using a 1x1 convolution, followed by a depthwise separable convolution, and then reduced back to the original dimension using another 1x1 convolution. This design allows for more efficient use of memory and computation while maintaining high accuracy.
+* **2014 - The Rise of Inception:**  The year 2014 marked the introduction of the GoogLeNet architecture (also known as Inception V1), which showcased the Inception module for multi-scale feature extraction. 
 
-### Representational Bottlenecks
+* **2015 - A Wave of Innovation:** The year 2015 witnessed a surge of novel architectures and concepts. 
+    * VGG  highlighted the importance of network depth by stacking small convolutional filters in deep configurations.
+    * ResNet revolutionized deep learning with residual learning, enabling the training of significantly deeper networks through the use of shortcut connections.
 
-* **Information Loss in Bottlenecks:** Source raises the concern that using non-linearities, like ReLU, within bottleneck layers can lead to information loss. The authors of MobileNetV2 argue that the information contained in the bottleneck layers lies in a low-dimensional subspace, and applying non-linearities to this compressed representation can potentially destroy valuable information. They propose using **linear bottlenecks** (bottlenecks without non-linearities) to mitigate this issue and improve performance.
+* **Post-2015 - Refinements and Efficiency Focus:**  The period following 2015 saw the continued refinement of existing architectures and an increasing emphasis on efficiency: 
+    * Inception architecture evolved with versions like Inception V2, V3, and V4. 
+    *  DenseNet  further explored dense connectivity patterns to facilitate feature reuse and improve information flow. 
+    * MobileNet, also introduced in 2017, prioritized efficiency for mobile applications using depthwise separable convolutions.
 
-* **Manifold of Interest:**  Source introduces the concept of a **"manifold of interest,"** suggesting that the activations within a convolutional layer form a manifold that can be embedded in a lower-dimensional subspace. This implies that the information content of the activations can be represented more efficiently without significant loss. The use of bottlenecks aims to exploit this property by compressing the representation while preserving the essential information.
+* **Recent Developments (Late 2010s - Present):**  The ongoing pursuit of efficient and high-performing architectures has led to:
+    * MobileNetV2  in 2018, introducing inverted residuals and linear bottlenecks to enhance the efficiency of MobileNets. 
+    * EfficientNet  in 2019, demonstrating the effectiveness of compound scaling for achieving state-of-the-art performance with fewer parameters. 
+    * ConvNeXt in 2021, modernizing classic ConvNet designs to rival the performance of Transformers, reaffirming the power of convolutions in computer vision. 
 
-### Computational Bottlenecks
+This timeline provides a general overview of the progression of CNN architecture research based on the provided sources. A more precise timeline would require consulting the complete papers and additional literature to verify specific publication dates and research timelines.
 
-* **Memory and Computational Constraints:** The sources consistently highlight the limitations imposed by **memory and computational resources**, particularly for mobile and embedded applications. Training and deploying large, complex networks often require significant memory capacity and processing power, posing challenges for resource-constrained devices.
-
-    * Source emphasizes that **memory availability on GPUs and training time tolerance are the primary constraints on network size.**
-
-* **Strategies for Efficiency:** Several sources propose strategies for overcoming computational bottlenecks:
-
-    * **Depthwise Separable Convolutions:** Sources demonstrate the effectiveness of **depthwise separable convolutions** in reducing computational complexity and model size. By separating the filtering and combination steps of a standard convolution, depthwise separable convolutions significantly reduce the number of parameters and operations, leading to more efficient models.
-
-    * **Model Shrinking Hyperparameters:** MobileNet introduces **width and resolution multipliers** as hyperparameters to control the size and computational cost of the model. These multipliers allow for flexible scaling of the network to meet specific resource constraints.
-
-    * **Compound Scaling:** EfficientNet proposes a **compound scaling method** that jointly scales network width, depth, and resolution to achieve optimal performance under given resource constraints. This balanced scaling approach leads to more efficient and accurate models compared to scaling only one dimension.
-
-### Beyond Bottlenecks: Holistic Network Optimization
-
-It's crucial to recognize that optimizing neural network models involves a complex interplay of architectural choices, training strategies, and resource constraints. Addressing bottlenecks in one area can have implications in others. For instance, using bottleneck blocks can reduce computational complexity but might introduce representational bottlenecks if non-linearities are used within the bottleneck layers.
-
-The sources collectively emphasize the need for a **holistic approach** to network design and optimization, considering the following factors:
-
-* **Careful Design of Bottleneck Blocks:** The choice of bottleneck structure, expansion ratio, and the use of non-linearities within the bottleneck layers can significantly impact both representational power and computational efficiency. 
-
-* **Balanced Scaling:** Scaling networks effectively involves finding the optimal balance between width, depth, and resolution. 
-
-* **Exploring Design Spaces:**  Rather than focusing solely on individual architectural choices, it's beneficial to explore broader design spaces using techniques like RegNet or NAS to discover optimal configurations. 
-
-* **Leveraging Hardware Advancements:** As computational hardware continues to advance, the nature of computational bottlenecks will likely evolve. Adapting architectures and training techniques to effectively utilize new hardware capabilities will be crucial for future advancements in neural network models.
+Please note that the field of CNNs is dynamic, and new architectures and concepts continue to emerge. It's essential to keep abreast of current research to stay up-to-date on the latest developments.
