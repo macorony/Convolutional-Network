@@ -1,4 +1,4 @@
-# ## CNN Architectures: 
+# CNN Architectures: 
 Several key concepts in CNN
 
 * **Network Depth:** The sources consistently emphasize the importance of network depth in achieving high accuracy. Deeper networks, however, pose challenges related to training, such as vanishing gradients. 
