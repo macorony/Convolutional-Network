@@ -6,14 +6,7 @@ Several key concepts in CNN
 * **Efficient Convolutions:** As CNNs grew deeper and more complex, the need for more efficient computations became apparent, especially for mobile and resource-constrained applications. The sources explore various techniques, including depthwise separable convolutions and inverted residuals that reduce the number of parameters and computations while maintaining accuracy.  
 * **Network Design Spaces:** While manual design has driven many successful architectures, the sources also recognize the value of exploring design spaces. Techniques like compound scaling offer a principled approach to balancing network width, depth, and resolution for optimal performance under specific constraints.  
 
-
-* **The early focus on simply increasing network depth (exemplified by VGG) quickly gave way to a more nuanced understanding of how to train very deep networks.**  ResNet's residual learning framework provided a crucial breakthrough, paving the way for even deeper and more complex architectures.
-* **The pursuit of efficiency has been a constant theme**, with architectures like MobileNet, Xception, and EfficientNet employing innovative techniques to reduce computational costs without compromising accuracy.
-* **The rise of automated architecture search methods, highlighted in sources like "designNetwork.pdf" and "efficientNet.pdf", signals a shift towards more data-driven approaches** for discovering optimal network configurations.
-
-## Timeline of Studies
-
-While the sources do not explicitly state the exact years in which each specific study was conducted, it is possible to construct a relative timeline based on references and contextual information within the provided excerpts.
+## Development timeline
 
 * **Earliest Foundations:** The origins of convolutional neural networks can be traced back to the late 1980s.  LeCun et al.'s work on applying backpropagation to handwritten zip code recognition, published in 1989, represents a foundational contribution to the field. Their subsequent work on gradient-based learning for document recognition, published in 1998, further advanced the understanding and application of CNNs.
 
@@ -39,6 +32,7 @@ While the sources do not explicitly state the exact years in which each specific
     * EfficientNet  in 2019, demonstrating the effectiveness of compound scaling for achieving state-of-the-art performance with fewer parameters. 
     * ConvNeXt in 2021, modernizing classic ConvNet designs to rival the performance of Transformers, reaffirming the power of convolutions in computer vision. 
 
-This timeline provides a general overview of the progression of CNN architecture research based on the provided sources. A more precise timeline would require consulting the complete papers and additional literature to verify specific publication dates and research timelines.
+* **The early focus on simply increasing network depth (exemplified by VGG) quickly gave way to a more nuanced understanding of how to train very deep networks.**  ResNet's residual learning framework provided a crucial breakthrough, paving the way for even deeper and more complex architectures.
+* **The pursuit of efficiency has been a constant theme**, with architectures like MobileNet, Xception, and EfficientNet employing innovative techniques to reduce computational costs without compromising accuracy.
+* **The rise of automated architecture search methods, highlighted in sources like "designNetwork.pdf" and "efficientNet.pdf", signals a shift towards more data-driven approaches** for discovering optimal network configurations.
 
-Please note that the field of CNNs is dynamic, and new architectures and concepts continue to emerge. It's essential to keep abreast of current research to stay up-to-date on the latest developments.
